@@ -8,6 +8,14 @@ var rutaDispositivos = require('./routes/dispositivo');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// cors setup
+
+app.use(
+    cors({
+        origin: 'http://localhost:4200'
+    })
+);
+
 app.use(express.json());
 
 app.use('/dispositivos', rutaDispositivos);
