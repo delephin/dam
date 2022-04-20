@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+    mysql-server:
+        image:                   mysql:5.7
+        hostname:                mysql-server
+        environment:
+            MYSQL_ROOT_PASSWORD: userpass
+        volumes:
+            -                    ./database/init:/docker-entrypoint-initdb.d
+            -                    ./database/data:/var/lib/mysql
+        networks:
+            -                    riego-backend-net
+        ports:
+            -                    "3306:3306"
+
+    mysql-admin:
+        image:                   phpmyadmin/phpmyadmin
+        environment: 
+            PMA_HOST:            mysql-server
+            PMA_PORT:            3306
+            MYSQL_ROOT_PASSWORD: userpass
+        networks:
+            -                    riego-backend-net
+        depends_on:
+            -                    mysql-server
+        ports:
+            -                    "8001:80"
+
+networks:
+    riego-backend-net:
+        driver:                  bridge
