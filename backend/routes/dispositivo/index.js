@@ -20,4 +20,22 @@ router.get('/', function(req, res) {
     });
 });
 
+/* 
+ * Obtiene un dispositivo
+ *
+ * Returns:
+ *   - 200 devuelve con exito el dispositivo asociado al id
+ */
+router.get('/:id', function(req, res) {
+
+    connection.query('select * from Dispositivos where dispositivoId = ' + req.params.id, function(err, result, fields) {
+        if (err) {
+            res.send(err).status(404);
+            return;
+        }
+        res.send(result);
+    });
+});
+
+
 module.exports = router;
