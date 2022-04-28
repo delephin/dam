@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Logs Riego - ElectroValvula {{valvulaId}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ng-container *ngIf="logsRiego">
+        <h2 *ngIf="!logsRiego || logsRiego.length == 0">No hay logs de riego.</h2>
+
+        <ion-header collapse="condense" *ngIf="logsRiego">
+            <ion-toolbar>
+                <ion-title size="large">Blank</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-list>
+            <ion-item *ngFor="let logRiego of this.logsRiego">
+                <ion-label>
+                    <h2>ElectroValvula {{logRiego.electroValvulaId}} | Fecha de captura: {{logRiego.fecha | date: 'dd/MM/yyyy'}} | Value: {{logRiego.apertura}}</h2>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </ng-container>
+</ion-content>

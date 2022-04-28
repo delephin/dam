@@ -1,0 +1,20 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>Dispositivo {{dispositivoId}}</ion-title>
+</ion-toolbar>
+<ion-content>
+    <div id="highcharts" style="width:100%; height:300px;"></div>
+
+    <ng-container *ngIf="dispositivo">
+        <ion-list style="text-align:center">
+            <ion-button color="primary" (click)="operateValve()" *ngIf="lastLog && lastLog.apertura === 1">Cerrar electroválvula</ion-button>
+            <ion-button color="primary" (click)="operateValve()" *ngIf="!lastLog || lastLog.apertura === 0">Abrir electroválvula</ion-button>
+            <ion-button color="primary" routerLink="/mediciones/{{dispositivoId}}">Ver todas las mediciones</ion-button>
+            <ion-button color="primary" routerLink="/logs/{{dispositivo.electrovalvulaId}}">Ver log riegos</ion-button>
+        </ion-list>
+    </ng-container>
+</ion-content>
