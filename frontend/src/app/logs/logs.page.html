@@ -22,7 +22,7 @@
         <ion-list>
             <ion-item *ngFor="let logRiego of this.logsRiego">
                 <ion-label>
-                    <h2>ElectroValvula {{logRiego.electroValvulaId}} | Fecha de captura: {{logRiego.fecha | date: 'dd/MM/yyyy'}} | Value: {{logRiego.apertura}}</h2>
+                    <h2>{{logRiego | logFormatting}}</h2>
                 </ion-label>
             </ion-item>
         </ion-list>

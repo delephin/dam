@@ -16,7 +16,8 @@ import { DatePipe } from '@angular/common';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, DispositivoService, MedicionService, LogRiegoService, DatePipe],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, DispositivoService, 
+    MedicionService, LogRiegoService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
